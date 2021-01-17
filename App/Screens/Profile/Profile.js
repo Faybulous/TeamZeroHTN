@@ -7,6 +7,7 @@ import ThemedText from '../../Components/ThemedComponents/ThemedText';
 import Feather from 'react-native-vector-icons/Feather';
 import {TouchableOpacity} from 'react-native';
 import ThemedHeader from '../../Components/ThemedComponents/ThemedHeader';
+import Buttons from './Buttons';
 
 class Profile extends Component {
   // Hiding the Header for this Screen
@@ -31,7 +32,7 @@ class Profile extends Component {
               justifyContent: 'center',
             }}>
             <View style={{justifyContent: 'center'}}>
-              <ThemedHeader style={{}}>Your Profile</ThemedHeader>
+              <ThemedHeader style={{}}>Wallet</ThemedHeader>
             </View>
             <View style={{flex: 1, justifyContent: 'center'}}>
               <TouchableOpacity
@@ -47,6 +48,7 @@ class Profile extends Component {
             </View>
           </View>
         </SafeAreaView>
+        <Buttons />
       </ThemedView>
     );
   }

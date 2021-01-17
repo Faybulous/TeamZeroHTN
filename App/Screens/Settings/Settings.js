@@ -42,8 +42,7 @@ class Settings extends Component {
       <ThemedView style={{flex: 1}}>
         {this.ListItem('General', 'General')}
         {this.ListItem('About', 'About')}
-        {this.ListItem('Help', 'Help')}
-        {this.ListItem('Privacy Policy', 'PrivacyPolicy')}
+        {this.ListItem('Source Code', 'Source Code')}
         <View style={{flex: 1, justifyContent: 'flex-end', marginBottom: 15}}>
           <Button
             onPress={() => this.props.navigation.navigate('Auth')}
