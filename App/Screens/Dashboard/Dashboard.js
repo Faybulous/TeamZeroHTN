@@ -25,7 +25,10 @@ class Dashboard extends Component {
       <ThemedView style={{flex: 1}}>
         <SafeAreaView>
           <ThemedHeader> Dashboard</ThemedHeader>
-          <View style={[{height: '100%', justifyContent: 'center'}]}>
+          <View
+            style={[
+              {height: '100%', marginTop: '8%', justifyContent: 'center'},
+            ]}>
             <Graph />
             <GridChoices />
           </View>
