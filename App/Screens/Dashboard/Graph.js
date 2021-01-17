@@ -17,7 +17,11 @@ export default class App extends React.Component {
               // set up the updating of the chart each second
               var series = this.series[0];
               setInterval(function() {
-                var y = Math.random();
+                let response = fetch(
+                  'https://live.blockcypher.com/btc-testnet/tx/57db73a1fae13da249d823d90d7e0482c7b4e863885d6cc4fb8a42c5d1394dc2/',
+                );
+                let json = response.json();
+                var y = json.applewatch.latest;
                 series.addPoint(y, true, true);
               }, 1000);
             },
