@@ -16,21 +16,24 @@ class Dashboard extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {language: 'h'};
   }
+  handleLanguage = langValue => {
+    this.setState({language: langValue});
+  };
 
   render() {
     theme = this.context.theme;
     return (
       <ThemedView style={{flex: 1}}>
         <SafeAreaView>
-          <ThemedHeader> Dashboard</ThemedHeader>
+          <ThemedText> {global.foo}</ThemedText>
           <View
             style={[
-              {height: '100%', marginTop: '8%', justifyContent: 'center'},
+              {height: '100%', marginTop: '5%', justifyContent: 'center'},
             ]}>
-            <Graph />
-            <GridChoices />
+            <Graph clickedItem={this.state.language} />
+            <GridChoices onSelectLanguage={this.handleLanguage} />
           </View>
         </SafeAreaView>
       </ThemedView>

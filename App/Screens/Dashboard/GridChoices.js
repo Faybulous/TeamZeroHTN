@@ -1,8 +1,18 @@
-import React from 'react';
-import {StyleSheet, ImageBackground, View, Text} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  ImageBackground,
+  View,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import {FlatGrid} from 'react-native-super-grid';
+const Example = ({onSelectLanguage}) => {
+  const onPress = name => {
+    global.foo = name;
+    onSelectLanguage(global.foo);
+  };
 
-export default function Example() {
   const [items, setItems] = React.useState([
     {
       name: 'Smart Fridge',
@@ -44,16 +54,18 @@ export default function Example() {
       // fixed
       spacing={10}
       renderItem={({item}) => (
-        <View style={[styles.itemContainer]}>
-          <ImageBackground source={item.uri} style={styles.image}>
-            {/* <Text style={styles.itemName}>{item.name}</Text> */}
-          </ImageBackground>
-        </View>
+        <TouchableOpacity onPress={() => onPress(item.name)}>
+          <View style={[styles.itemContainer]}>
+            <ImageBackground source={item.uri} style={styles.image}>
+              {/* <Text style={styles.itemName}>{item.name}</Text> */}
+            </ImageBackground>
+          </View>
+        </TouchableOpacity>
       )}
     />
   );
-}
-
+};
+export default Example;
 const styles = StyleSheet.create({
   gridView: {
     marginTop: 20,

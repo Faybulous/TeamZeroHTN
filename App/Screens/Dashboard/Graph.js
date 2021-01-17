@@ -1,13 +1,16 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import HighchartsReactNative from '@highcharts/highcharts-react-native';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       chartOptions: {
+        title: {
+          text: '',
+        },
+
         chart: {
           events: {
             load: function() {
@@ -32,6 +35,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text>{this.props.language}</Text>
         <HighchartsReactNative
           styles={styles.container}
           options={this.state.chartOptions}
