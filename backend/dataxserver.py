@@ -12,9 +12,9 @@ from pymongo import MongoClient
 from pprint import pprint
 
 ##wallet for device
-userkey = PrivateKeyTestnet('93PC6j7fK4FGyHg4DVXK9f8BnektLqPmyKThDjaJDDZZFbryRNE')
+userkey = PrivateKeyTestnet('REDACTED')
 ##wallet for sending
-corpkey = PrivateKeyTestnet('91uwMrzeW2iWiV8eMj6Y1P8QZhy8Lh4SuD2PQzqxmRx8KSdfbVq')
+corpkey = PrivateKeyTestnet('REDACTED')
 
 
 # The session object makes use of a secret key.
@@ -28,7 +28,7 @@ app.config.from_object(__name__)
 
 
 
-client = MongoClient("mongodb+srv://rootzero:fitx@cluster0-jnzul.gcp.mongodb.net/test?authSource=admin&replicaSet=Cluster0-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true")
+client = MongoClient("REDACTED")
 db = client["datax"]
 
 
