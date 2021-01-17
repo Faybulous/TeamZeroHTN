@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   FlatList,
   SafeAreaView,
@@ -27,7 +27,15 @@ const Item = ({item, onPress, style}) => (
 
 const App = () => {
   const [selectedId, setSelectedId] = useState(null);
-
+  const [mydata, setmyData] = useState([]);
+  useEffect(() => {
+    var myresponse = fetch('http://c924e91ed0cf.ngrok.io/getuserbalance');
+    console.log(myresponse);
+    fetch('http://c924e91ed0cf.ngrok.io/getuserbalance')
+      .then(response => response.json())
+      .then(json => setmyData(json.balanceusd))
+      .catch(error => console.error(error));
+  }, []);
   const renderItem = ({item}) => {
     const backgroundColor = item.id === selectedId ? '#ff2b00' : '#ff8f8f';
 
@@ -44,7 +52,7 @@ const App = () => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.Subtitle}>
         Balance:
-        {selectedId && <Text style={styles.Subtitle}> 30</Text>}
+        {selectedId && <Text style={styles.Subtitle}> {mydata}</Text>}
       </Text>
 
       <FlatList

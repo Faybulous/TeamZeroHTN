@@ -16,7 +16,7 @@ class Dashboard extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {language: 'h'};
+    this.state = {language: 'N/A'};
   }
   handleLanguage = langValue => {
     this.setState({language: langValue});
