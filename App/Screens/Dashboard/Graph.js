@@ -8,6 +8,18 @@ export default class App extends React.Component {
 
     this.state = {
       chartOptions: {
+        chart: {
+          events: {
+            load: function() {
+              // set up the updating of the chart each second
+              var series = this.series[0];
+              setInterval(function() {
+                var y = Math.random();
+                series.addPoint(y, true, true);
+              }, 1000);
+            },
+          },
+        },
         series: [
           {
             data: [1, 2, 3],
