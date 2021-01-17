@@ -2,10 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {
   FlatList,
   SafeAreaView,
-  StatusBar,
+  View,
   StyleSheet,
   Text,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 
 const DATA = [
@@ -29,6 +30,14 @@ const App = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [mydata, setmyData] = useState([]);
   const [mydata2, setmyData2] = useState([]);
+  const onPayPress = name => {
+    //does nothing yet
+    Alert.alert('Payment Made');
+  };
+  const onTransferPress = name => {
+    //does nothing yet
+    Alert.alert('Transfer Completed');
+  };
 
   useEffect(() => {
     var myresponse = fetch('http://c924e91ed0cf.ngrok.io/getuserbalance');
@@ -70,14 +79,32 @@ const App = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
         extraData={selectedId}
+        style={{marginTop: '7%'}}
       />
+
+      <View style={styles.MainContainer}>
+        <TouchableOpacity
+          style={styles.SubmitButtonStyle}
+          activeOpacity={0.5}
+          onPress={() => onPayPress('hi')}>
+          <Text style={styles.TextStyle}> Pay </Text>
+        </TouchableOpacity>
+      </View>
+      <View style={styles.MainContainer}>
+        <TouchableOpacity
+          style={styles.SubmitButtonStyle}
+          activeOpacity={0.5}
+          onPress={() => onTransferPress('hi')}>
+          <Text style={styles.TextStyle}> Transfer </Text>
+        </TouchableOpacity>
+      </View>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 30,
+    marginTop: 40,
   },
   item: {
     padding: 20,
@@ -91,6 +118,25 @@ const styles = StyleSheet.create({
     fontSize: 28,
     padding: 20,
     fontWeight: 'bold',
+  },
+  MainContainer: {},
+
+  SubmitButtonStyle: {
+    marginTop: 50,
+    paddingTop: 25,
+    paddingBottom: 30,
+    marginLeft: 30,
+    marginRight: 30,
+    backgroundColor: '#00BCD4',
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#fff',
+  },
+
+  TextStyle: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 25,
   },
 });
 
