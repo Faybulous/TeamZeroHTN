@@ -10,11 +10,11 @@ import {
 
 const DATA = [
   {
-    id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
+    id: 'bd7acbea',
     title: 'Datax',
   },
   {
-    id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
+    id: '3ac68afc',
     title: 'Canadian',
   },
 ];
@@ -28,15 +28,21 @@ const Item = ({item, onPress, style}) => (
 const App = () => {
   const [selectedId, setSelectedId] = useState(null);
   const [mydata, setmyData] = useState([]);
+  const [mydata2, setmyData2] = useState([]);
+
   useEffect(() => {
     var myresponse = fetch('http://c924e91ed0cf.ngrok.io/getuserbalance');
     console.log(myresponse);
     fetch('http://c924e91ed0cf.ngrok.io/getuserbalance')
       .then(response => response.json())
-      .then(json => setmyData(json.balanceusd))
+      .then(function(json) {
+        setmyData(json.balanceusd);
+        setmyData2(json.balancesatoshi);
+      })
       .catch(error => console.error(error));
   }, []);
   const renderItem = ({item}) => {
+    console.log('currentOne: ' + selectedId);
     const backgroundColor = item.id === selectedId ? '#ff2b00' : '#ff8f8f';
 
     return (
@@ -51,8 +57,12 @@ const App = () => {
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.Subtitle}>
-        Balance:
-        {selectedId && <Text style={styles.Subtitle}> {mydata}</Text>}
+        Balance:{' '}
+        {selectedId && (
+          <Text style={styles.Subtitle}>
+            {selectedId == 'bd7acbea' ? mydata : mydata2}
+          </Text>
+        )}
       </Text>
 
       <FlatList

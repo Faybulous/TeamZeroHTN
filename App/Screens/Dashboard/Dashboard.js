@@ -16,7 +16,7 @@ class Dashboard extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {language: 'N/A'};
+    this.state = {language: null};
   }
   handleLanguage = langValue => {
     this.setState({language: langValue});
@@ -31,7 +31,7 @@ class Dashboard extends Component {
             {global.foo}
           </ThemedText>
           <View style={[{height: '100%', justifyContent: 'center'}]}>
-            <Graph clickedItem={this.state.language} />
+            {this.state.language && <Graph clickedItem={this.state.language} />}
             <GridChoices onSelectLanguage={this.handleLanguage} />
           </View>
         </SafeAreaView>
