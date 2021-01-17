@@ -35,7 +35,9 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.props.language}</Text>
+        <Text>
+          {this.props.language} {this.props.check}
+        </Text>
         <HighchartsReactNative
           styles={styles.container}
           options={this.state.chartOptions}

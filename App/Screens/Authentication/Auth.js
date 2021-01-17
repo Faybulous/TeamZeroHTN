@@ -21,7 +21,7 @@ class Auth extends React.Component {
     return (
       <View
         style={{flex: 1, justifyContent: 'space-around', alignItems: 'center'}}>
-        <ThemedHeader style={{padding: 20}}>Team Zero Thing</ThemedHeader>
+        <ThemedHeader style={{padding: 20}}>DataX - Team Zero</ThemedHeader>
         <View style={theme.imgContainer}>
           <Image
             style={theme.img}

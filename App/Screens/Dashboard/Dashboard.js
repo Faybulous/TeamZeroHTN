@@ -27,11 +27,10 @@ class Dashboard extends Component {
     return (
       <ThemedView style={{flex: 1}}>
         <SafeAreaView>
-          <ThemedText> {global.foo}</ThemedText>
-          <View
-            style={[
-              {height: '100%', marginTop: '5%', justifyContent: 'center'},
-            ]}>
+          <ThemedText style={{textAlign: 'center', marginTop: '3%'}}>
+            {global.foo}
+          </ThemedText>
+          <View style={[{height: '100%', justifyContent: 'center'}]}>
             <Graph clickedItem={this.state.language} />
             <GridChoices onSelectLanguage={this.handleLanguage} />
           </View>
